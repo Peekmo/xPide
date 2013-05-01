@@ -2,6 +2,9 @@
 #### linenumber.py
 #### Created : 04-29-2013
 #### Last Update : 04-29-2013
+#### Toute reproduction ou diffusion a des fins commerciales
+#### est strictement interdite.
+####
 #### By Peekmo
 ###########################################################
 

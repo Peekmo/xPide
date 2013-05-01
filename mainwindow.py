@@ -2,6 +2,9 @@
 #### MainWindow.py
 #### Created : 04-29-2013
 #### Last Update : 04-30-2013
+#### Toute reproduction ou diffusion a des fins commerciales
+#### est strictement interdite.
+####
 #### By Peekmo
 ###########################################################
 
@@ -39,6 +42,7 @@ class MainWindow(QMainWindow):
 		self.setCentralWidget(self.tabWidget)
 
 		self.connect(self.actionNew, SIGNAL("triggered()"), self.newFile)
+		self.connect(self.actionSave, SIGNAL("triggered()"), self.saveFile)
 
 		self.newFile()
 
@@ -49,6 +53,15 @@ class MainWindow(QMainWindow):
 	def newOnglet(self):
 		onglet = Onglet(self)
 		self.onglets.append(onglet)
+
+	def majTabName(self):
+		for i, o in enumerate(self.onglets):
+			self.tabWidget.setTabText(i, o.getNom())
+
+	def saveFile(self):
+		for i, o in enumerate(self.onglets):
+			if self.tabWidget.currentIndex() == i:
+				o.save()
 
 	def initialiserFenetre(self):
 		self.setWindowTitle("IDE")
