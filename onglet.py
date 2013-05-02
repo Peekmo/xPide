@@ -14,7 +14,6 @@
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
-import os
 import sys
 
 from content import *
@@ -51,7 +50,7 @@ class Onglet(QWidget):
 	def save(self):
 		if not self.lastSave:
 			self.lastSave = True
-			self.nom = self.nom.split("*")[1]
+			self.nom = self.nom.split("*")[1][1:]
 			self.parent.majTabName()
 
 	def getNom(self):

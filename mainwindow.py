@@ -17,6 +17,7 @@ import os
 import sys
 
 from onglet import *
+from listefichiers import *
 
 class MainWindow(QMainWindow):
 	def __init__(self):
@@ -32,7 +33,12 @@ class MainWindow(QMainWindow):
 
 		self.dock = QDockWidget("Fichiers", self)
 		self.dock.setMinimumWidth(150)
+
 		self.tree = QTreeView()
+		self.viewFichiers = ListeFichiers()
+		self.tree.setModel(self.viewFichiers)
+		self.tree.setHeaderHidden(True)
+
 		self.dock.setWidget(self.tree)
 		self.addDockWidget(Qt.LeftDockWidgetArea, self.dock)
 
@@ -49,6 +55,7 @@ class MainWindow(QMainWindow):
 	def newFile(self):
 		self.newOnglet()
 		self.tabWidget.addTab(self.onglets[-1], "Nouveau")
+		self.viewFichiers.addFile(self.onglets[-1])
 
 	def newOnglet(self):
 		onglet = Onglet(self)
@@ -57,6 +64,7 @@ class MainWindow(QMainWindow):
 	def majTabName(self):
 		for i, o in enumerate(self.onglets):
 			self.tabWidget.setTabText(i, o.getNom())
+		self.viewFichiers.refreshNames()
 
 	def saveFile(self):
 		for i, o in enumerate(self.onglets):

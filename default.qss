@@ -114,3 +114,39 @@ QMenu {
     margin-bottom:3px;
     padding:4px;
 }
+
+QTreeView {
+     show-decoration-selected: 1;
+ }
+
+ QTreeView::item {
+    border: 0;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+ }
+
+ QTreeView::item:hover {
+     background-color: #272822;
+     border: 0px;
+ }
+
+ QTreeView::item:selected {
+     border: 1px solid #393928;
+     border: 0px;
+ }
+
+ QTreeView::item:selected:active{
+     background-color: #393928;
+ }
+
+ QTreeView::item:selected:!active {
+     background-color:#393928;
+ }
+
+ QTreeView::branch:selected {
+    background-color: #393928;
+ }
+
+ QTreeView::branch:hover {
+    background-color: #272822;
+ }
